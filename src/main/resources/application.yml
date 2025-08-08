@@ -1,0 +1,11 @@
+spring:
+  config:
+    import:
+      - classpath:/yml/application-local.yml
+      - classpath:/yml/application-prod.yml
+      - classpath:/yml/application-redis.yml
+  profiles:
+    group:
+      prod: prod, redis
+      local: local, redis
+    active: local
