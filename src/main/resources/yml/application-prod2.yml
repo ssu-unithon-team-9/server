@@ -1,6 +1,7 @@
 spring:
-  activate:
-    on-profile: prod
+  config:
+    activate:
+      on-profile: prod2
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DB_URL}
@@ -28,3 +29,6 @@ springdoc:
       enabled: true
     cache:
       disabled: true
+
+server:
+  port: 8082
