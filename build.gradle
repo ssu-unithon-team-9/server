@@ -28,6 +28,9 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	// actuator
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	// web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -48,9 +51,6 @@ dependencies {
 
 	// mysql
 	implementation 'mysql:mysql-connector-java:8.0.32'
-
-	// redis
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
