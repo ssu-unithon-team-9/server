@@ -31,7 +31,7 @@ jobs:
     
     # 1) 워크플로우 실행 전 기본적으로 체크아웃 필요
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     # 2) JDK 11버전 설치, 다른 JDK 버전을 사용하다면 수정
     - name: Set up JDK 23
