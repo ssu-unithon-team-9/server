@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 
 env:
-  S3_BUCKET_NAME: memorlink-server   # 프로젝트용 S3 버킷명
-  S3_KEY: memorlink_server.zip       # 업로드/배포 공통 zip 파일명
+  S3_BUCKET_NAME: memorlink-sever        # <- 실제 버킷명 (sever)
+  S3_KEY: memorlink_server.zip           # 업로드/배포 공통 zip 파일명
 
 jobs:
   build:
