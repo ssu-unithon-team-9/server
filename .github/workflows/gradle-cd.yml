@@ -6,8 +6,10 @@ on:
     branches: [ main ]
 
 env:
-  S3_BUCKET_NAME: memorlink-sever        # <- 실제 버킷명 (sever)
+  S3_BUCKET_NAME: memorlink-sever        # 실제 S3 버킷명
   S3_KEY: memorlink_server.zip           # 업로드/배포 공통 zip 파일명
+  CODEDEPLOY_APP: memorlink-codedeploy   # CodeDeploy 애플리케이션명
+  CODEDEPLOY_GROUP: memorlink-codedeploy # CodeDeploy 배포그룹명
 
 jobs:
   build:
@@ -43,27 +45,13 @@ jobs:
     - name: Copy Jar
       run: cp ./build/libs/*.jar ./deploy
 
-    # appspec.yml 안전 복사 (없으면 스킵)
-    - name: Copy appspec.yml (optional)
-      shell: bash
-      run: |
-        if [ -f appspec.yml ]; then
-          cp appspec.yml ./deploy
-          echo "✔ appspec.yml copied."
-        else
-          echo "⚠ appspec.yml not found, skipping copy."
-        fi
+    # appspec.yml 반드시 포함
+    - name: Copy appspec.yml
+      run: cp appspec.yml ./deploy
 
-    # scripts/*.sh 안전 복사 (없으면 스킵)
-    - name: Copy script files (optional)
-      shell: bash
-      run: |
-        if ls ./scripts/*.sh >/dev/null 2>&1; then
-          cp ./scripts/*.sh ./deploy
-          echo "✔ scripts copied."
-        else
-          echo "⚠ No scripts/*.sh found, skipping copy."
-        fi
+    # scripts/*.sh 반드시 포함
+    - name: Copy script files
+      run: cp ./scripts/*.sh ./deploy
 
     - name: Make zip file
       shell: bash
@@ -86,8 +74,8 @@ jobs:
       shell: bash
       run: |
         aws deploy create-deployment \
-          --application-name sopt-server-codedeploy \
-          --deployment-group-name sopt-server-codedeploy-group \
+          --application-name "$CODEDEPLOY_APP" \
+          --deployment-group-name "$CODEDEPLOY_GROUP" \
           --file-exists-behavior OVERWRITE \
           --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$S3_KEY \
           --region ap-northeast-2
