@@ -13,16 +13,16 @@ public class BaseException extends RuntimeException {
         this.httpStatus = httpStatus;
     }
 
-    public HttpStatus getHttpStatus() {
-        return this.httpStatus;
-    }
-
     public int getHttpCode() {
         return this.httpStatus.value();
     }
 
     public ErrorType getErrorType() {
         return this.errorType;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return this.httpStatus;
     }
 }
 
