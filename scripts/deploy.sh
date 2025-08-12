@@ -47,6 +47,7 @@ else
 fi
 
 echo "> $IDLE_PROFILE 배포"
+source ~/.bashrc
 nohup java -jar -Dspring.profiles.active=$IDLE_PROFILE $IDLE_APPLICATION_PATH &
 
 echo "> $IDLE_PROFILE 10초 후 Health check 시작"
