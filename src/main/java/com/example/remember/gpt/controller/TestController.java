@@ -3,7 +3,7 @@ package com.example.remember.gpt.controller;
 import com.example.remember.common.dto.response.ApiResponse;
 import com.example.remember.common.type.gpt.GptSuccessType;
 import com.example.remember.gpt.dto.GPTResponseDto;
-import com.example.remember.gpt.service.ChatGPTServiceImpl;
+import com.example.remember.gpt.service.ChatGPTService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "GPT", description = "GPT test용입니다.")
 public class TestController {
 
-    private final ChatGPTServiceImpl chatGPTService;
+    private final ChatGPTService chatGPTService;
 
     @GetMapping("")
     @Operation(summary = "GPT 호출 API", description = "prompt 입력 시 gpt가 답변해줍니다.")
