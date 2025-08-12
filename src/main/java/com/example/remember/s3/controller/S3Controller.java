@@ -48,7 +48,7 @@ public class S3Controller {
 
     // ✅ 핵심: consumes = MULTIPART_FORM_DATA, @RequestPart 사용
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ApiResponse<Object> uploadFile(@RequestPart("file") MultipartFile file) {
+    public ApiResponse<String> uploadFile(@RequestPart("file") MultipartFile file) {
         try {
             String imageUrl = s3Service.upLoadImage(file);
             return ApiResponse.success(S3SuccessCode.IMAGE_UPLOAD, imageUrl);

@@ -27,6 +27,11 @@ public class ImageMatchingQuiz {
     }
 
     public ImageMatchingQuiz(String key0, String key1, String key2) {
+        if (key0 == null || key0.isBlank() ||
+                key1 == null || key1.isBlank() ||
+                key2 == null || key2.isBlank()) {
+            throw new IllegalArgumentException("모든 키는 null이거나 빈 값일 수 없습니다.");
+        }
         this.key0 = key0;
         this.key1 = key1;
         this.key2 = key2;

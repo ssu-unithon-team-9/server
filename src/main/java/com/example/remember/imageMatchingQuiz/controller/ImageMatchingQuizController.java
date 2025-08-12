@@ -1,7 +1,7 @@
 package com.example.remember.imageMatchingQuiz.controller;
 
-import com.example.remember.imageMatchingQuiz.dto.imageMatchingQuizRequest;
-import com.example.remember.imageMatchingQuiz.dto.imageMatchingQuizResponse;
+import com.example.remember.imageMatchingQuiz.dto.ImageMatchingQuizRequest;
+import com.example.remember.imageMatchingQuiz.dto.ImageMatchingQuizResponse;
 import com.example.remember.imageMatchingQuiz.service.ImageMatchingQuizService;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +21,12 @@ public class ImageMatchingQuizController {
     private final ImageMatchingQuizService imageMatchingQuizService;
 
     @GetMapping("/url")
-    public ResponseEntity<imageMatchingQuizResponse> getPresignedUrls(
+    public ResponseEntity<ImageMatchingQuizResponse> getPresignedUrls(
             @RequestParam("key")
             @Size(min = 3, max = 3)
             List<String> keys) {
         var normalized = keys.stream().map(this::toKey).toList();
-        var resp = imageMatchingQuizService.generate(new imageMatchingQuizRequest(normalized));
+        var resp = imageMatchingQuizService.generate(new ImageMatchingQuizRequest(normalized));
         return ResponseEntity.ok(resp);
     }
 
@@ -34,8 +34,12 @@ public class ImageMatchingQuizController {
         if (urlOrKey == null)
             return null;
         if (urlOrKey.startsWith("http://") || urlOrKey.startsWith("https://")) {
-            String path = URI.create(urlOrKey).getPath();
-            return path != null ? path.replaceFirst("^/", "") : urlOrKey;
+            try {
+                String path = URI.create(urlOrKey).getPath();
+                return path != null ? path.replaceFirst("^/", "") : urlOrKey;
+            } catch (IllegalArgumentException e) {
+                return urlOrKey;
+            }
         }
         return urlOrKey;
     }
