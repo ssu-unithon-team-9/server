@@ -1,4 +1,13 @@
 package com.example.remember.imageMatchingQuiz.dto;
 
-public record imageMatchingQuizResponse() {
+import java.util.List;
+
+public record imageMatchingQuizResponse(
+        List<ImageResource> images
+) {
+    public record ImageResource(
+            String key,
+            String url
+    ) {
+    }
 }
