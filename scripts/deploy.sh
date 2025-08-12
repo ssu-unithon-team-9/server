@@ -1,4 +1,12 @@
 #!/bin/bash
+set -euo pipefail
+
+if [ -f /etc/memorlink/.env ]; then
+  set -a
+  . /etc/memorlink/.env
+  set +a
+fi
+
 BASE_PATH=/var/www
 BUILD_PATH=$(ls $BASE_PATH/memorlink/build/libs/remember-0.0.1-SNAPSHOT.jar)
 JAR_NAME=$(basename $BUILD_PATH)
