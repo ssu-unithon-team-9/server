@@ -5,7 +5,7 @@ if [ -f /etc/memorlink/.env ]; then
   set +a
 fi
 
-BUILD_PATH=$(ls /home/ubuntu/app/memorlink-0.0.1-SNAPSHOT.jar)
+BUILD_PATH=$(ls /home/ubuntu/app/remember-0.0.1-SNAPSHOT.jar)
 JAR_NAME=$(basename $BUILD_PATH)
 echo "> build 파일명: $JAR_NAME"
 
