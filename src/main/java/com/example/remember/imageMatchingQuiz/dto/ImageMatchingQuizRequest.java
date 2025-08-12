@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
-public record imageMatchingQuizRequest(
+public record ImageMatchingQuizRequest(
         @NotNull
         @Size(min = 3, max = 3)
         List<String> imageKeys

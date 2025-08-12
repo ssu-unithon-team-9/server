@@ -2,7 +2,7 @@ package com.example.remember.imageMatchingQuiz.dto;
 
 import java.util.List;
 
-public record imageMatchingQuizResponse(
+public record ImageMatchingQuizResponse(
         List<ImageResource> images
 ) {
     public record ImageResource(
