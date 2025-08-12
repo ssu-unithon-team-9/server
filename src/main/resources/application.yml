@@ -5,6 +5,7 @@ spring:
       - classpath:/yml/application-prod1.yml
       - classpath:/yml/application-prod2.yml
       - classpath:/yml/application-gpt.yml
+      - classpath:/yml/application-s3.yml
   profiles:
     group:
       prod1: prod1, gpt

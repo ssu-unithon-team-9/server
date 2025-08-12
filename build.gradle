@@ -51,6 +51,9 @@ dependencies {
 
 	// mysql
 	implementation 'mysql:mysql-connector-java:8.0.32'
+
+	// s3 image
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 }
 
 tasks.named('test') {
