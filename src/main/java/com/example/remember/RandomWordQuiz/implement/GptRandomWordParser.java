@@ -1,9 +1,9 @@
 package com.example.remember.RandomWordQuiz.implement;
 
+import com.example.remember.RandomWordQuiz.dto.RandomWordResponse;
 import com.example.remember.common.exception.InternalServerException;
 import com.example.remember.common.type.quiz.QuizErrorCode;
 import com.example.remember.gpt.dto.GPTResponseDto;
-import com.example.remember.RandomWordQuiz.dto.RandomWordResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -2,8 +2,6 @@ package com.example.remember.RandomWordQuiz.entity;
 
 import jakarta.persistence.*;
 
-import java.time.OffsetDateTime;
-
 @Entity
 @Table(name = "word_generation_log")
 public class WordGenerationLog {
