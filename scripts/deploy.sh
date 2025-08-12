@@ -5,8 +5,7 @@ if [ -f /etc/memorlink/.env ]; then
   set +a
 fi
 
-BASE_PATH=/var/www
-BUILD_PATH=$(ls $BASE_PATH/memorlink/build/libs/remember-0.0.1-SNAPSHOT.jar)
+BUILD_PATH=$(ls /home/ubuntu/app/memorlink-0.0.1-SNAPSHOT.jar)
 JAR_NAME=$(basename $BUILD_PATH)
 echo "> build 파일명: $JAR_NAME"
 
@@ -19,18 +18,18 @@ CURRENT_PROFILE=$(curl -s http://localhost/profile)
 echo "> $CURRENT_PROFILE"
 
 # 쉬고 있는 set 찾기: set1이 사용중이면 set2가 쉬고 있고, 반대면 set1이 쉬고 있음
-if [ $CURRENT_PROFILE == prod1 ]
+if [ $CURRENT_PROFILE == set1 ]
 then
-  IDLE_PROFILE=prod2
+  IDLE_PROFILE=set2
   IDLE_PORT=8082
-elif [ $CURRENT_PROFILE == prod2 ]
+elif [ $CURRENT_PROFILE == set2 ]
 then
-  IDLE_PROFILE=prod1
+  IDLE_PROFILE=set1
   IDLE_PORT=8081
 else
   echo "> 일치하는 Profile이 없습니다. Profile: $CURRENT_PROFILE"
-  echo "> prod1을 할당합니다. IDLE_PROFILE: prod1"
-  IDLE_PROFILE=prod1
+  echo "> set1을 할당합니다. IDLE_PROFILE: set1"
+  IDLE_PROFILE=set1
   IDLE_PORT=8081
 fi
 
@@ -53,11 +52,10 @@ else
 fi
 
 echo "> $IDLE_PROFILE 배포"
-source ~/.bashrc
-nohup java -jar -Dspring.profiles.active=$IDLE_PROFILE $IDLE_APPLICATION_PATH &
+nohup java -jar -Duser.timezone=Asia/Seoul -Dspring.profiles.active=$IDLE_PROFILE $IDLE_APPLICATION_PATH >> /home/ubuntu/app/nohup.out 2>&1 &
 
 echo "> $IDLE_PROFILE 10초 후 Health check 시작"
-echo "> curl -s http://localhost:$IDLE_PORT/actuator/health "
+echo "> curl -s http://localhost:$IDLE_PORT/health "
 sleep 10
 
 for retry_count in {1..10}
@@ -87,3 +85,4 @@ done
 
 echo "> 스위칭"
 sleep 10
+/home/ubuntu/app/nonstop/switch.sh
