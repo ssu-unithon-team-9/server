@@ -10,4 +10,4 @@ spring:
       prod1: prod1, gpt
       prod2: prod2, gpt
       local: local, gpt
-    active: prod2
+    active: local
