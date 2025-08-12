@@ -30,7 +30,6 @@ jobs:
     - name: Generate application.yml
       shell: bash
       run: |
-        set -euo pipefail
         mkdir -p ./src/main/resources
         mkdir -p ./src/main/resources/yml
         printf '%s' "${{ secrets.MEMORLINK_APPLICATION }}" > ./src/main/resources/application.yml
