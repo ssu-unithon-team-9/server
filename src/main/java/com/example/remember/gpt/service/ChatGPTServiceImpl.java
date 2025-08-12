@@ -1,15 +1,16 @@
 package com.example.remember.gpt.service;
 
+import com.example.remember.common.exception.BaseException;
+import com.example.remember.common.exception.NotFoundException;
+import com.example.remember.common.type.ErrorType;
+import com.example.remember.common.type.gpt.GPTErrorType;
 import com.example.remember.gpt.dto.GPTRequestDto;
 import com.example.remember.gpt.dto.GPTResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -39,7 +40,9 @@ public class ChatGPTServiceImpl implements ChatGPTService {
         if (gptResponse != null) {
             return gptResponse;
         } else {
-            throw new RuntimeException("Error parsing response from OpenAI Server");
+//            throw new RuntimeException("Error parsing response from OpenAI Server");
+//            throw new BaseException(GPTErrorType.GPT_RESPONSE_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new NotFoundException(GPTErrorType.GPT_RESPONSE_ERROR);
         }
     }
 }
