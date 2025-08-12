@@ -1,6 +1,6 @@
 package com.example.remember.RandomWordQuiz.implement;
 
-import com.example.remember.common.exception.InternationalServerException;
+import com.example.remember.common.exception.InternalServerException;
 import com.example.remember.common.type.quiz.QuizErrorCode;
 import com.example.remember.gpt.dto.GPTResponseDto;
 import com.example.remember.RandomWordQuiz.dto.RandomWordResponse;
@@ -17,11 +17,10 @@ public class GptRandomWordParser {
 
     public RandomWordResponse toRandomWordResponse(GPTResponseDto gptResponseDto) {
         String json = extractText(gptResponseDto);
-        System.out.println(json);
         try {
             return objectMapper.readValue(json, RandomWordResponse.class);
         } catch (Exception e) {
-            throw new InternationalServerException(QuizErrorCode.WORD_PARSING_FAILED);
+            throw new InternalServerException(QuizErrorCode.WORD_PARSING_FAILED);
         }
     }
 
@@ -42,6 +41,6 @@ public class GptRandomWordParser {
                 }
             }
         }
-        throw new InternationalServerException(QuizErrorCode.WORD_GENERATION_FAILED);
+        throw new InternalServerException(QuizErrorCode.WORD_GENERATION_FAILED);
     }
 }

@@ -10,7 +10,7 @@ public class WordGenerationLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String word;
     private String lang;
@@ -19,11 +19,4 @@ public class WordGenerationLog {
 
     @Column(length = 1000)
     private String prompt;
-
-    private OffsetDateTime createdAt;
-
-    @PrePersist
-    public void onCreate() {
-        if (createdAt == null) createdAt = OffsetDateTime.now();
-    }
 }
