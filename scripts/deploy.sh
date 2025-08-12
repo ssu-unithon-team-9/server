@@ -1,6 +1,4 @@
 #!/bin/bash
-set -euo pipefail
-
 if [ -f /etc/memorlink/.env ]; then
   set -a
   . /etc/memorlink/.env
