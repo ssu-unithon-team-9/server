@@ -6,7 +6,7 @@ public final class PromptProvider {
     private PromptProvider() {
     }
 
-    public static String JsonSingleWordPrompt(RandomWordRequest req, int count) {
+    public static String jsonSingleWordPrompt(RandomWordRequest req, int count) {
         String lang = "ko";    // 고정
         String pos = "noun";  // 고정
 
