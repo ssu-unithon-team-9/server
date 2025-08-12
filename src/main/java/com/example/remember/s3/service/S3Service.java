@@ -3,7 +3,6 @@ package com.example.remember.s3.service;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import lombok.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +21,17 @@ public class S3Service {
 
     // S3에 이미지 업로드
     public String upLoadImage(MultipartFile image) throws IOException {
-        String fileName = UUID.randomUUID() + "_" + image.getOriginalFilename();
+        String originalFileName = image.getOriginalFilename();
+        if (originalFileName == null || originalFileName.isEmpty()) {
+            originalFileName = "unnamed";
+        }
+
+        String extension = "";
+        int lasDot = originalFileName.lastIndexOf('_');
+        if (lasDot > 0) {
+            extension = originalFileName.substring(lasDot).toLowerCase();
+        }
+        String fileName = UUID.randomUUID().toString() + extension;
 
         // 메타데이터 설정
         ObjectMetadata metadata = new ObjectMetadata();

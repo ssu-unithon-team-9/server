@@ -1,14 +1,13 @@
 package com.example.remember.RandomWordQuiz.service;
 
-import com.example.remember.common.exception.BaseException;
-import com.example.remember.common.exception.InternalServerException;
-import com.example.remember.common.type.quiz.QuizErrorCode;
-import com.example.remember.gpt.dto.GPTResponseDto;
-import com.example.remember.gpt.service.ChatGPTService;
 import com.example.remember.RandomWordQuiz.dto.RandomWordRequest;
 import com.example.remember.RandomWordQuiz.dto.RandomWordResponse;
 import com.example.remember.RandomWordQuiz.implement.GptRandomWordParser;
 import com.example.remember.RandomWordQuiz.implement.PromptProvider;
+import com.example.remember.common.exception.InternalServerException;
+import com.example.remember.common.type.quiz.QuizErrorCode;
+import com.example.remember.gpt.dto.GPTResponseDto;
+import com.example.remember.gpt.service.ChatGPTService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

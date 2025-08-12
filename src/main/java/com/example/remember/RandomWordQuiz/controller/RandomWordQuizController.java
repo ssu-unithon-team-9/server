@@ -1,10 +1,10 @@
 package com.example.remember.RandomWordQuiz.controller;
 
-import com.example.remember.common.dto.response.ApiResponse;
-import com.example.remember.common.type.quiz.QuizSuccessCode;
 import com.example.remember.RandomWordQuiz.dto.RandomWordRequest;
 import com.example.remember.RandomWordQuiz.dto.RandomWordResponse;
 import com.example.remember.RandomWordQuiz.service.RandomWordQuizService;
+import com.example.remember.common.dto.response.ApiResponse;
+import com.example.remember.common.type.quiz.QuizSuccessCode;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
