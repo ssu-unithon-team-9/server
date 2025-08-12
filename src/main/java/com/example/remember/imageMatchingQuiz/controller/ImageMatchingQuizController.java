@@ -3,6 +3,7 @@ package com.example.remember.imageMatchingQuiz.controller;
 import com.example.remember.imageMatchingQuiz.dto.ImageMatchingQuizRequest;
 import com.example.remember.imageMatchingQuiz.dto.ImageMatchingQuizResponse;
 import com.example.remember.imageMatchingQuiz.service.ImageMatchingQuizService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/quiz/image-matching")
 @RequiredArgsConstructor
+@Tag(name = "카드 뒤집기 퀴즈", description = "카드 뒤집기 퀴즈 관련 API입니다.")
 public class ImageMatchingQuizController {
     private final ImageMatchingQuizService imageMatchingQuizService;
 
