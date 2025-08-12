@@ -33,10 +33,11 @@ jobs:
         set -euo pipefail
         mkdir -p ./src/main/resources
         mkdir -p ./src/main/resources/yml
-        printf '%s' "${{ secrets.SOPT_APPLICATION }}" > ./src/main/resources/application.yml
-        printf '%s' "${{ secrets.SOPT_APP_LOCAL_YML }}" > ./src/main/resources/yml/application-local.yml
-        printf '%s' "${{ secrets.SOPT_APP_PROD1_YML }}" > ./src/main/resources/yml/application-prod1.yml
-        printf '%s' "${{ secrets.SOPT_APP_PROD2_YML }}" > ./src/main/resources/yml/application-prod2.yml
+        printf '%s' "${{ secrets.MEMORLINK_APPLICATION }}" > ./src/main/resources/application.yml
+        printf '%s' "${{ secrets.MEMORLINK_APPLICATION_LOCAL }}" > ./src/main/resources/yml/application-local.yml
+        printf '%s' "${{ secrets.MEMORLINK_APPLICATION_PROD1 }}" > ./src/main/resources/yml/application-prod1.yml
+        printf '%s' "${{ secrets.MEMORLINK_APPLICATION_PROD2 }}" > ./src/main/resources/yml/application-prod2.yml
+        printf '%s' "${{ secrets.MEMORLINK_APPLICATION_GPT }}" > ./src/main/resources/yml/application-gpt.yml
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
