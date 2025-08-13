@@ -129,7 +129,7 @@ public class ReportServiceImpl implements ReportService {
             quizScore = 0;
         }
 
-        ReportScoreEntity entity = reportScoreJpaRepository.findByType(type)
+        ReportScoreEntity entity = reportScoreJpaRepository.findByUserIdAndType(userId, type)
                 .map(e -> {
                     e.setScore(quizScore);
                     return e;

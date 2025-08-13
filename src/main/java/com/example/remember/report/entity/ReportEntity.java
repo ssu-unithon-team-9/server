@@ -41,7 +41,6 @@ public class ReportEntity {
     public static class Total {
         private double score;
         private String danger;
-        private String goal;
 
         @ElementCollection
         @CollectionTable(name = "report_total_weak", joinColumns = @JoinColumn(name = "report_id"))
